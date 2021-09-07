@@ -6,9 +6,11 @@ import { Message } from './message.interface';
 export class MailService {
   constructor(
     @Inject(MAIL_TRANSPORT) private readonly mailTransport: MailTransport,
+    // @Inject() private readonly publisher: MailWorkerPublisher,
   ) {}
 
   async send(message: Message) {
+    // TODO await this.publisher.send();
     await this.mailTransport.send(message);
   }
 }
